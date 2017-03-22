@@ -4,4 +4,5 @@
     <string name="password">密码</string>
     <string name="loginIn">登陆</string>
     <string name="loginOut">退出</string>
+    <string name="createAccount">没有账号？创建一个</string>
 </resources>
