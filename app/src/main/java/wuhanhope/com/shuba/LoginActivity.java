@@ -18,7 +18,6 @@ import butterknife.ButterKnife;
 import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
 import wuhanhope.com.shuba.Utils.BaseActivity;
-import wuhanhope.com.shuba.Utils.CustomDialog;
 
 public class LoginActivity extends BaseActivity {
     private static final String TAG = "LoginActivity";
@@ -45,17 +44,17 @@ public class LoginActivity extends BaseActivity {
 
     @OnClick(R.id.login_btn)
     public void LoginIn(View view) {
-        CustomDialog dialog = new CustomDialog(this, R.style.CustomDialog);
-        dialog.show();
+//        CustomDialog dialog = new CustomDialog(this, R.style.CustomDialog);
+//        dialog.show();
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0); //强制隐藏键盘
         imm.showSoftInput(view,InputMethodManager.SHOW_FORCED); //强制显示键盘
-        //login();
+        login();
     }
 
     @OnClick(R.id.create_account)
     public void CreateAccount(View view) {
-
+        Toast.makeText(this, "Create New Account", Toast.LENGTH_SHORT).show();
     }
 
     @OnCheckedChanged(R.id.read_label)
@@ -65,6 +64,11 @@ public class LoginActivity extends BaseActivity {
         } else {
             login_btn.setEnabled(false);
         }
+    }
+
+    @OnClick(R.id.read_policy)
+    public void showPolicy(View view) {
+        Toast.makeText(this, "Policy", Toast.LENGTH_SHORT).show();
     }
 
     private void login() {

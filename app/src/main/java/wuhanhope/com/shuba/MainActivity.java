@@ -1,10 +1,10 @@
 package wuhanhope.com.shuba;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import butterknife.ButterKnife;
 import wuhanhope.com.shuba.Utils.BaseActivity;
-import wuhanhope.com.shuba.Utils.CustomDialog;
 
 //https://github.com/Zzz468005600/Stone
 
@@ -17,10 +17,10 @@ public class MainActivity extends BaseActivity {
         ButterKnife.bind(this);
         ButterKnife.setDebug(true);
 
-        CustomDialog dialog = new CustomDialog(this, R.style.CustomDialog);
-        dialog.show();
-//        Intent intent = new Intent(this, LoginActivity.class);
-//        startActivity(intent);
+//        CustomDialog dialog = new CustomDialog(this, R.style.CustomDialog);
+//        dialog.show();
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
 
     @Override

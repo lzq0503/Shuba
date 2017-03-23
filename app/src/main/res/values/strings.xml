@@ -5,11 +5,13 @@
     <string name="loginIn">登陆</string>
     <string name="loginOut">退出</string>
     <string name="createAccount">新用户注册</string>
-    <string name="account_tip">请输入手机号或邮箱</string>
+    <string name="account_tip">请输入手机号码</string>
     <string name="psw_tip">请输入密码</string>
     <string name="logo_desc">书吧logo</string>
     <string name="forget_pwd">忘记密码?</string>
     <string name="services_info">我已经阅读了</string>
     <string name="policy">服务条款</string>
     <string name="loading">加载中，请稍后...</string>
+    <string name="regist_phone">请输入手机号</string>
+    <string name="code">请输入验证码</string>
 </resources>
