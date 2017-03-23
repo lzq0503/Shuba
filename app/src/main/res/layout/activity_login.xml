@@ -1,224 +1,140 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="wuhanhope.com.shuba.LoginActivity">
+
+    android:background="@android:color/white"
+    tools:context=".LoginActivity">
 
     <LinearLayout
+        android:id="@+id/logo_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:contentDescription="@string/logo_desc"
+            android:scaleType="centerInside"
+            android:src="@drawable/logo" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/loginInfo_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_below="@id/logo_layout"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
 
-        <View
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/account_layout"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="@dimen/margin_block"
-            android:background="@color/border_block" />
+            android:layout_height="wrap_content">
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@android:color/white"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:paddingLeft="0dp"
-            android:paddingRight="@dimen/margin_block">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="center_vertical|start"
-                android:layout_marginEnd="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginStart="5dp"
-                android:contentDescription="手机号"
-                android:scaleType="centerInside"
-                android:src="@drawable/account_phone" />
-
-            <View
-                android:layout_width="2dp"
-                android:layout_height="18dp"
-                android:layout_gravity="center_vertical|start"
-                android:layout_marginLeft="34dp"
-                android:layout_marginStart="34dp"
-                android:background="@color/divider" />
-
-            <android.support.design.widget.TextInputLayout
+            <EditText
+                android:id="@+id/account"
                 android:layout_width="match_parent"
-                android:layout_height="36dp"
-                android:layout_gravity="center_vertical|start"
-                android:layout_marginLeft="48dp"
-                android:layout_marginStart="48dp"
-                android:hint="请输入您的手机号码">
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/user_mobile"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
-                    android:gravity="center_vertical"
-                    android:imeOptions="actionNext"
-                    android:inputType="phone"
-                    android:singleLine="true"
-                    android:textColor="@color/font_title"
-                    android:textSize="@dimen/font_normal"/>
-            </android.support.design.widget.TextInputLayout>
-
-        </FrameLayout>
-
-        <View
-            android:layout_width="34dp"
-            android:layout_height="1dp"
-            android:background="@android:color/white" />
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@android:color/white"
-            android:paddingLeft="0dp"
-            android:paddingRight="@dimen/margin_block">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="center_vertical|start"
-                android:layout_marginEnd="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginStart="5dp"
-                android:contentDescription="密码"
-                android:scaleType="centerInside"
-                android:src="@drawable/account_password" />
-
-            <View
-                android:layout_width="1dp"
-                android:layout_height="20dp"
-                android:layout_gravity="center_vertical|start"
-                android:layout_marginLeft="34dp"
-                android:layout_marginStart="34dp"
-                android:background="@color/divider" />
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="36dp"
-                android:layout_gravity="center_vertical|start"
-                android:gravity="center_vertical"
-                android:layout_marginLeft="48dp"
-                android:layout_marginStart="48dp"
-                android:hint="请输入您的密码">
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/user_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:inputType="textPassword"
-                    android:background="@android:color/transparent"
-                    android:singleLine="true"
-                    android:textColor="@color/font_title"
-                    android:textSize="@dimen/font_normal" />
-            </android.support.design.widget.TextInputLayout>
-
-            <CheckBox
-                android:id="@+id/check_visible"
-                style="@style/PasswordCheckboxTheme"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minHeight="24dp"
-                android:layout_gravity="end|center_vertical"
-                android:gravity="center" />
+                android:hint="@string/account_tip"
+                android:inputType="phone"
+                android:maxLines="1" />
+        </android.support.design.widget.TextInputLayout>
 
-        </FrameLayout>
-
-        <View
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/password_layout"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/border_block" />
+            android:layout_height="wrap_content"
+            android:layout_below="@id/account_layout"
+            app:passwordToggleEnabled="true">
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/psw_tip"
+                android:inputType="textPassword"
+                android:maxLines="1" />
+        </android.support.design.widget.TextInputLayout>
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.ButtonBarLayout
+        android:id="@+id/login_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/loginInfo_layout"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
 
         <Button
             android:id="@+id/login_btn"
             android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:layout_margin="15dp"
-            android:text="登陆"
-            android:textSize="@dimen/font_title"
-            android:textColor="@android:color/holo_red_dark"
-            android:background="@drawable/bg_btn_main"
-            android:shadowColor="@color/colorPrimaryDarker"/>
+            android:layout_height="wrap_content"
+            android:text="@string/loginIn" />
+    </android.support.v7.widget.ButtonBarLayout>
 
-        <Button
-            android:id="@+id/register_btn"
-            android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginBottom="15dp"
-            android:text="快速注册"
-            android:textSize="@dimen/font_title"
-            android:textColor="@android:color/holo_red_dark"
-            android:background="@drawable/bg_btn_main"/>
-    </LinearLayout>
+    <FrameLayout
+        android:id="@+id/other_loginInfo_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/login_layout"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp">
 
-    <!--<LinearLayout-->
-        <!--android:orientation="vertical"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:paddingTop="56dp"-->
-        <!--android:paddingLeft="24dp"-->
-        <!--android:paddingRight="24dp">-->
+        <TextView
+            android:id="@+id/forget_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/forget_pwd"
+            android:textSize="18sp" />
 
-        <!--<ImageView-->
-            <!--android:src="@drawable/logo"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="72dp"-->
-            <!--android:layout_marginBottom="24dp"-->
-            <!--android:layout_gravity="center_horizontal"/>-->
+        <TextView
+            android:id="@+id/create_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:text="@string/createAccount"
+            android:textSize="18sp" />
 
-        <!--<android.support.design.widget.TextInputLayout-->
-            <!--android:layout_marginTop="8dp"-->
-            <!--android:layout_marginBottom="8dp"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content">-->
-            <!--<EditText-->
-                <!--android:id="@+id/input_email"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:hint="@string/username"-->
-                <!--android:inputType="textEmailAddress"/>-->
-        <!--</android.support.design.widget.TextInputLayout>-->
+        <RelativeLayout
+            android:layout_marginBottom="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|bottom">
 
-        <!--<android.support.design.widget.TextInputLayout-->
-            <!--android:layout_marginBottom="8dp"-->
-            <!--android:layout_width="match_parent"-->
-            <!--app:passwordToggleEnabled="true"-->
-            <!--android:layout_height="wrap_content">-->
+            <CheckBox
+                android:id="@+id/read_label"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:checked="true"
+                android:textSize="16sp"
+                android:layout_alignParentTop="true"
+                android:text="@string/services_info" />
 
-            <!--<EditText-->
-                <!--android:id="@+id/password"-->
-                <!--android:hint="@string/password"-->
+            <TextView
+                android:id="@+id/read_policy"
+                android:gravity="center_vertical"
+                android:layout_toRightOf="@id/read_label"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_alignParentTop="true"
+                android:textColor="@android:color/holo_red_light"
+                android:textSize="16sp"
+                android:text="@string/policy" />
+        </RelativeLayout>
 
-                <!--android:inputType="textPassword"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content" />-->
-        <!--</android.support.design.widget.TextInputLayout>-->
+    </FrameLayout>
 
-        <!--<android.support.v7.widget.AppCompatButton-->
-            <!--android:id="@+id/btn_login"-->
-            <!--android:layout_marginBottom="20dp"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="@string/loginIn"-->
-            <!--android:layout_marginTop="20dp"/>-->
 
-        <!--<TextView-->
-            <!--android:id="@+id/sign_up"-->
-            <!--android:gravity="center"-->
-            <!--android:layout_gravity="center_horizontal"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:text="@string/createAccount"-->
-            <!--android:textSize="20sp"-->
-            <!--android:layout_height="wrap_content" />-->
-    <!--</LinearLayout>-->
-
-</LinearLayout>
+</RelativeLayout>

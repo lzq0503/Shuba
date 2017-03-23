@@ -1,26 +1,40 @@
 package wuhanhope.com.shuba;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
+import wuhanhope.com.shuba.Utils.BaseActivity;
+import wuhanhope.com.shuba.Utils.CustomDialog;
 
 public class LoginActivity extends BaseActivity {
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 1;
 
-    @BindView(R.id.user_mobile)
-    public EditText userName;
+    @BindView(R.id.account)
+    public EditText account;
 
-    @BindView(R.id.user_password)
+    @BindView(R.id.password)
     public EditText password;
+
+    @BindView(R.id.read_label)
+    public CheckBox checkReadLabel;
+
+    @BindView(R.id.login_btn)
+    public Button login_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,28 +45,41 @@ public class LoginActivity extends BaseActivity {
 
     @OnClick(R.id.login_btn)
     public void LoginIn(View view) {
-        login();
+        CustomDialog dialog = new CustomDialog(this, R.style.CustomDialog);
+        dialog.show();
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0); //强制隐藏键盘
+        imm.showSoftInput(view,InputMethodManager.SHOW_FORCED); //强制显示键盘
+        //login();
     }
 
-//    @OnClick(R.id.sign_up)
-//    public void CreateAccount(View view) {
-//
-//    }
+    @OnClick(R.id.create_account)
+    public void CreateAccount(View view) {
+
+    }
+
+    @OnCheckedChanged(R.id.read_label)
+    public void setLoginStatus(CompoundButton buttonView, boolean isChecked) {
+        if (isChecked) {
+            login_btn.setEnabled(true);
+        } else {
+            login_btn.setEnabled(false);
+        }
+    }
 
     private void login() {
-
         if (!validate()) {
             onLoginFailed();
             return;
         }
 
-        userName.setEnabled(false);
+        account.setEnabled(false);
         final ProgressDialog progressDialog = new ProgressDialog(this, R.style.Theme_AppCompat_Dialog_Alert);
         progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Authenticating...");
+        progressDialog.setMessage("正在登陆...");
         progressDialog.show();
 
-        String username = userName.getText().toString();
+        String username = account.getText().toString();
         String psd = password.getText().toString();
 
         new android.os.Handler().postDelayed(
@@ -71,19 +98,25 @@ public class LoginActivity extends BaseActivity {
     }
 
     private void onLoginSuccess() {
-        userName.setEnabled(true);
+        account.setEnabled(true);
         finish();
     }
 
     private boolean validate() {
-        String username = userName.getText().toString();
+        String username = account.getText().toString();
         String pwd = password.getText().toString();
 
-        if (username.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(username).matches()) {
-            userName.setError("please enter a valid email address");
+        if (username.isEmpty()) {
+            account.setError("账号不能为空");
+        }
+
+        boolean phone_check = Patterns.PHONE.matcher(username).matches();
+
+        if (!phone_check) {
+            account.setError("please enter a valid phone number");
             return false;
         } else {
-            userName.setError(null);
+            account.setError(null);
         }
 
         if (pwd.isEmpty() || password.length() < 4 || password.length() > 10) {
