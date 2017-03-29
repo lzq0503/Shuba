@@ -15,7 +15,7 @@
         <ImageView
             android:layout_centerVertical="true"
             android:id="@+id/regist_phone_img"
-            android:src="@drawable/account_phone"
+            android:src="@mipmap/phone"
             android:layout_width="30dp"
             android:layout_height="30dp" />
 
@@ -34,6 +34,24 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@mipmap/password"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </android.support.design.widget.TextInputLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/code_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -42,7 +60,7 @@
             android:layout_centerVertical="true"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/account_phone"/>
+            android:src="@mipmap/auth_code"/>
 
         <!--https://github.com/kongqw/Android-CheckView-->
         <android.support.design.widget.TextInputLayout
